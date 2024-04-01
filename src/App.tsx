@@ -1,33 +1,21 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import dravenData from './assets/champion/Draven.json';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const spells = dravenData.data.Draven.spells;
+  const spinningAxe = spells.find(spell => spell.name === "Spinning Axe");
+ 
+  // Loop through "spells" field, get description, cooldownBurn, costBurn info. 
   return (
     <>
+      <h1>ChampionCodex :3</h1>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+            <h2>{spinningAxe?.name} Information</h2>
+            <p><strong>Description:</strong> {spinningAxe?.description}</p>
+            <p><strong>Cooldown:</strong> {spinningAxe?.cooldownBurn}</p>
+            <p><strong>Cost:</strong> {spinningAxe?.costBurn}</p>
+        </div>
     </>
   )
 }
